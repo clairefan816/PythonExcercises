@@ -1,0 +1,134 @@
+7.7 Exercises
+
+1. Is the following a legal Python program?
+
+def proc(x):
+    return x + 2
+
+def proc(n):
+    return 2*n + 1
+
+def main():
+     x = proc(5)
+    
+main()
+
+ANSWER: legal
+
+2. Is the following a legal Python program?
+
+def proc(x):
+    print(x+2)
+
+def main():
+    x = proc(5)
+    y = proc(4)
+
+main()
+
+ANSWER: legal
+
+3. Is the following a legal Python program?
+
+def proc(x):
+    print(x + 2)
+
+def main():
+    x = proc(5)
+
+main()
+
+ANSWER: legal
+
+4. Is the following a legal Python program?
+
+def proc(x, y):
+    return 2*x + y*y
+
+def main():
+    print(proc(5,4))
+
+main()
+
+ANSWER: legal
+
+5. Is the following a legal Python program?
+
+def proc(x, y):
+    return 2*x + y*y
+
+def main():
+    print(proc(5))
+
+main()
+
+ANSWER: illegal
+
+6. Is the following a legal Python program?
+
+def proc(x):
+    return 2*x
+
+def main():
+    return(proc(5, 4))
+
+main()
+
+ANSWER: illegal
+
+7. Is the following a legal Python program?
+
+def proc(x)：
+    print(2*x*x)
+
+def main():
+    proc(5)
+
+main()
+
+ANSWER: legal
+
+
+8. The programmer was expecting the following program to print 200. What does it print instead? Why does it print what it does?
+
+def proc(x):
+    x = 2*x*x
+
+def main():
+    num = 10
+    proc(num)
+    print(num)
+main()
+
+
+ANSWER: 
+It print 10 instead. In the main function, though it called the proc function, however, the parameter in print function is the variable num, not the return value of the proc function.
+
+
+9. Is the following program legal since the variable x is used in two different places (proc and main)?
+
+def proc(x):
+    return 2*x*x
+
+def main():
+    x = 10
+    print(proc(x))
+
+main()
+
+ANSWER:
+Yes, it is legal. The variable x is a local variable and protected by its function.
+
+10. Is the following program legal since the actual parameter has a different name from the formal parameter (y vs. x)? Why or why not?
+
+def proc(x):
+    return 2*x*x
+
+def main():
+    y = 10
+    print(proc(y))
+
+main()
+
+ANSWER:
+It is legal. The parameter with a different name to the formal one is used to pass the value to the formal parameter. They have no need to be with same names.

@@ -1,0 +1,104 @@
+
+
+The total number of disks will be row * column, so the disks that being placed in the board will be collected in a list structure.
+
+class Disk:
+	attribute 1: 
+	initial x and initial y value for definiting the disk's location
+	attributes 2: 
+	target x and target y value for definiting what location disk will be dropped
+	attributes 3: 
+	a boolean value for defining whether the disk is go with the mouse or do drop animation
+	attribute 4:
+	An integer count for designating the serial number of the disk. It can be used to control the player/color of the disk
+
+	method 1: 
+	Def draw_disk(self):
+	through measuring the even/odd property (count%2) of the disk, red/yellow disk is drawed.
+
+	method 2:
+	def disk_flying(self):
+	based on the boolean condition of whether the disk is intact or not, the disk is being arranged to drop down to the designate location.
+
+	method 3:
+	def arrived(self):
+	used to check whether the disk arrived the target location or not, so that the program can move to the next procedure
+
+
+
+
+The chessboard is defined as a set of tuples{(row, column)}
+
+class Chessboard:
+	attribute 1:
+	row and column
+	attribute 2:
+	a set of tuples for saving the (row, column) information of the disk
+
+
+	method 1:
+	def draw_board(self):
+	draw row * column numbers of rectangles
+
+	method 2:
+	def get_player_disk_location(self, x):
+		pass in the mouseX's location and then check whether there are available space for the disk
+		return (target_row, target_column)
+
+	method 3:
+	def get_AI_disk_location(self, x):
+		check the board
+		return (target_row, target_column)
+	
+	method 4:
+	def row_column_to_xy(self, row_column):
+		transform the (row, column) to the location data in the board
+	
+	method 5:
+	def check_board(self):
+		check if the board is filled or not
+
+	method 6:
+	def check_player(self):
+		check it is human or AI's turn
+
+	method 7:
+	def check_win(self):
+		check whether win or not
+
+
+
+For the controller py
+def setup():
+	size()
+	fill()
+	ellipseMode(CONER)
+
+def draw():
+	draw chessboard first
+	take one disk
+	draw disk
+	check the disk's valid possible location
+	if mousePressed:
+		draw disk
+	when mousereleased:
+		drop the disk
+		AI's turn
+		check the winner
+
+* When the user makes a move
+  The controller is in an 'idle' state that is responding to user's mouse click and
+  hovering. Once the user releases mouse at a valid column the controller no longer
+  accepts user input and is in a 'player_animation' state.
+* When the disk is dropping
+  Keep rendering the dropping animation until disk has reached location. Then the game
+  controller moves to 'ai' state.
+* When it’s the computer’s turn
+  Pass the current board to AI and ask for a strategy. Once the strategy is ready. Create
+  a disk and the controller moves to 'ai_animation' state. After animation finished
+  return to 'idle' state.
+* When game over status is assessed
+  Each time exiting 'player_animation' or 'ai_animation' we try to see if there is a
+  winner once. I will scan all row, column and diags to see if there is 4 consecutive.
+  
+		

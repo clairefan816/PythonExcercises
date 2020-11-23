@@ -1,0 +1,36 @@
+Which functions you tested for Part 1：
+
+The test were majorly focused on the get_disk_location() in class Chessboard. It's the
+most error prone part in the game. It takes a mouse location and returns the final
+location of the the disk. The occupy() is tested together as they interact in the class.
+
+I also tested check_board() function.
+
+A summary of valid inputs (inputs for which you’d expect a ‘good’ result) and expected return values
+
+Normally a valid input to the get_disk_location() is a mouseX that is inside the playable
+area of the game and not above an already full column. Expected return values is a tuple
+representing a row-column location that is the lowest empty location of a not full column.
+
+A valid input to the occupy() function is a tuple representing a row-column location that
+is yet occupied on the chessboard. The function doesn't return.
+
+
+A summary of invalid inputs (inputs for which you’d expect a ‘bad’ result) and expected return values
+
+invalid inputs for get_disk_location() are mouseX that is outside the playable area or hovering above a full column. For bad inputs I expect None as return value.
+
+Invalid inputs for occupy() method are locations that are already occupied, in this case
+the method throws an exception.
+
+Whether you’re confident you’ve verified every possible eventuality
+
+I have created case for each reason that an input could be valid or invalid. I'm confident
+that they are well tested.
+
+
+Whether your testing revealed any bugs that you then went back and fixed.
+
+A very subtle bug was captured by the test. When search for lowest empty slot, I didn't
+distinguish whether the loop quit because of a found or exhaust. It makes me able to top
+off a full column.

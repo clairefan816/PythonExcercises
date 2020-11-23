@@ -1,0 +1,90 @@
+Exercises 5.9
+
+5.4 addnonnegative.py
+entry = 0
+sum = 0
+print('Enter numbers to sum, negative number ends list: ')
+while entry >= 0:
+    entry = int(input())
+    if entry >= 0:
+        sum += entry
+print('Sum = ', sum)
+
+1. In listing 5.4 (addnonnegatives.py) could the condition of the if statement have used > instead of >= and achieved the same results? Why?
+
+Answer:
+Yes.
+It achieves the same results with > in if statement. Adding zero would not change the result, so zeros can be skippted.
+
+
+2. Listing 5.4 (addnonnegatives.py) could be condition of the while statement have used > instead of >= and achieved the same results? Why?
+Answer:
+
+No. 
+Because at the very beginning, we initialized the entry to 0. If the condition of the while loop switched from entry >= 0 to entry > 0, the loop will not be entered because the while statement is not true initially.
+
+
+3. In listing 5.4 (addnonnegatives.py) what would happen if the statement
+entry = int(input())      # Get the value
+were moved out of the loop? Is moving the assignment out of the loop a good or bad thing to do? Why? 
+
+Answer:
+If entry = int(input()) moves out of the loop, the entry assignment will no longer the member of the loop and the variable entry would not be reassigned after the first assignment. 
+Bad. The program becomes a infinite loop when user inputs any non-negative value.
+
+
+
+4. How many asterisks does the following code fragment print?
+a = 0
+while a < 100:
+    print('*', end='')
+    a += 1
+print()
+
+answer:
+100 asterisks in its own line.
+
+
+5. How many asterisks does the following code fragment print?
+a = 0
+while a < 100:
+    print('*', end='')
+print()
+
+Answer:
+Infinite number of asterisks would be printed. As the while loop is always true that the a = 0 is always less than 100. So the the print statement within the while loop will be repeatly executed and can never break the loop.
+
+
+13. Provide the exact sequence of integers specified by each of the following range expressions.
+(a) range(5) 
+    0, 1, 2, 3, 4
+
+(b) range(5, 10)
+    5, 6, 7, 8, 9
+
+(c) range(5, 20, 3)
+    5, 8, 11, 14, 17
+
+(d) range(20, 5, -1)
+    20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6
+
+(e) range(20, 5, -3)
+    20, 17, 14, 11, 8
+
+(f) range(10, 5)
+    empty
+
+(g) range(0)
+    empty
+
+(h) range(10, 101, 10)
+    10, 20, 30, 40, 50, 60, 70, 80, 90, 100
+
+(i) range(10, -1, -1)
+    10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0
+
+(j) range(-3, 4)
+    -3, -2, -1, 0, 1, 2, 3
+
+(k) range(0, 10, 1)
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9

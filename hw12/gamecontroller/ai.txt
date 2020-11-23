@@ -1,0 +1,36 @@
+Did you attempt to make your computer player very smart -- i.e., do something more clever than just pick a random legal move?
+
+I designed a rubric for AI to weigh its next-move. AI will pretend he has dropped a disk in one possible location, and then calculating the score of this location based on the rubric. Based on this procedure, AI will weigh the scores of every possible location and finally move to the location with the highest score.
+
+Here is the rubric I designed. This design is based on three considerations: move for winning the game, move for defensive, and prevent a bad move. The final score will be summarized based on this rubric.
+
+For winning purpose:
+1. The decisive step for wining gets the highest score: if ai can win with this move, just do it without any hesitation. This move is given with a super high score of 10000.
+2. The necessary move for winning gets the second higher score: if this move makes ai in a line of three with two open ends, this move will be credit with 900 points. If this move makes ai's disks in a line of three, but with a half-open end, which is also great, and gets 800 points.
+3. In connect 4, the central location is always better than other locations, so every position in the central column will be credited with 4 points.
+4. As long as this move makes two in a line, 50 points will be added.
+
+For defensive purpose:
+1. The decisive step for blocking the opponent's line: if ai detects that the other player has already three in line, it should block it right away. So this decisive defensive move is given a point of 9000, which is just a little lower than the decisive winning step.
+2. Defensive in advance: sometimes the opponent makes an open line of two (two in line with empty spaces at two ends). This is the time AI needs to block one end unless AI will be in a very passive position for the next turn. So this move is given a score of 500.
+
+The preventable moves:
+1. Any single, or two, or three empty spaces in between opponent's disks are regarded as bad locations. Because you just waste your move for filling the space either wining for yourself or blocking your opponent. So this kind of locations will be marked as negative 100 points.
+
+
+If so, were you able to accomplish this? Is your computer player as smart as you would like?
+
+I think it is already as smart as I predict.
+
+How did you determine which piece to play next? Tell us about your “pick next move” algorithm.
+
+The "turn control" in my design is based on a finite state machine. There are four different states in this game: player's turn (trigged by mouse press), player's disk drop (trigged by mouse released), ai's turn (trigged by player's disk arrived at the target place as well as the player not win result) and ai's disk drop (trigged by ai disk's flying animation). After ai's disk flying to the target place and no one wins, it triggered another circulation of the finite state machine.
+This "pick next move" algorithm runs based on changing different states of player and ai through triggers.
+
+How often did your computer program beat you, or your friends, or whoever tested it out for you?
+I win 4 times, lose 6 times in 10 games.
+I am satisfied with this result.
+
+How would you improve it in the future?
+
+This algorithm only checks the different consequences of the one-step move. Hope in future, I can design a smarter AI which can weigh two or three steps and then make a decision.
